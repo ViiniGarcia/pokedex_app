@@ -25,22 +25,28 @@ class _CardPokemonState extends State<CardPokemon> {
         },
         child: Card(
           child: Container(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+            padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
             child: Column(
               children: [
                 Expanded(
+                  flex: 0,
                   child: Align(
                     alignment: Alignment.topLeft,
                     child:
                     ListTile(
-                      title: Text(widget.pokemon.name.toUpperCase()),
+                      title:
+                      Text(
+                          widget.pokemon.name.toUpperCase(),
+                        style: const TextStyle(
+                          fontSize: 12,
+                        ),
+                      ),
                     ),
                   ),
                 ),
                 Expanded(
                   child: Image.network(
                     fit: BoxFit.fitHeight,
-                    scale: 1,
                     errorBuilder: (context, error, stackTrace) =>
                     const Text('Imagem indísponivel'),
                     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${widget.pokemon.id}.png',

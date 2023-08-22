@@ -26,21 +26,25 @@ class _CardTypeState extends State<CardType> {
         },
         child: Card(
           child: Container(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+            padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
+                  flex: 0,
                   child: ListTile(
-                    title: Text(widget.type.name.toUpperCase()),
+                    title: Text(
+                        widget.type.name.toUpperCase(),
+                      style: const TextStyle(
+                        fontSize: 12,
+                      ),
+                    ),
                   ),
                 ),
                 Expanded(
                   child: Container(
                     padding: const EdgeInsetsDirectional.all(10),
                     child: Image.network(
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fitHeight,
                       errorBuilder: (context, error, stackTrace) =>
                       const Text('Imagem indísponivel'),
                       'https://raw.githubusercontent.com/ViiniGarcia/PokedexSprites/main/Sprites/Types/type=${widget.type.name}.png',

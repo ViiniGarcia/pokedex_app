@@ -5,8 +5,8 @@ class Pokemon{
   String name;
   int? baseExp;
   bool? isDefault;
-  int? weight;
-  int? height;
+  double? weight;
+  double? height;
   List<PokemonType>? types;
 
 
@@ -23,8 +23,8 @@ class Pokemon{
         data['name'].toString().replaceAll('-', ' '),
         data['base_experience'],
         data['is_default'],
-        data['weight'],
-        data['height'],
+        data['weight']/10.toDouble(),
+        data['height']/10.toDouble(),
         listPokemonTypes
     );
     return pokemon;
