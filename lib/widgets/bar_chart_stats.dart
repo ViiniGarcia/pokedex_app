@@ -83,7 +83,7 @@ class StatsChartState extends State<StatsChart> {
     );
   }
 
-  List<BarChartGroupData> showingGroups() => List.generate(5, (i) {
+  List<BarChartGroupData> showingGroups() => List.generate(6, (i) {
     switch (i) {
       case 0:
         return makeGroupData(0, 5, isTouched: i == touchedIndex);
@@ -94,6 +94,8 @@ class StatsChartState extends State<StatsChart> {
       case 3:
         return makeGroupData(3, 7.5, isTouched: i == touchedIndex);
       case 4:
+        return makeGroupData(4, 9, isTouched: i == touchedIndex);
+      case 5:
         return makeGroupData(4, 9, isTouched: i == touchedIndex);
       default:
         return throw Error();
@@ -111,18 +113,21 @@ class StatsChartState extends State<StatsChart> {
             String weekDay;
             switch (group.x) {
               case 0:
-                weekDay = 'Attack';
+                weekDay = 'HP';
                 break;
               case 1:
-                weekDay = 'Defense';
+                weekDay = 'Attack';
                 break;
               case 2:
-                weekDay = 'Special Attack';
+                weekDay = 'Defense';
                 break;
               case 3:
-                weekDay = 'Special Defense';
+                weekDay = 'Special Attack';
                 break;
               case 4:
+                weekDay = 'Special Defense';
+                break;
+              case 5:
                 weekDay = 'Speed';
                 break;
               default:
@@ -184,18 +189,21 @@ class StatsChartState extends State<StatsChart> {
     Widget text;
     switch (value.toInt()) {
       case 0:
-        text = const Text('ATK', style: style);
+        text = const Text('HP', style: style);
         break;
       case 1:
-        text = const Text('DEF', style: style);
+        text = const Text('ATK', style: style);
         break;
       case 2:
-        text = const Text('S.ATK', style: style);
+        text = const Text('DEF', style: style);
         break;
       case 3:
-        text = const Text('S.DEF', style: style);
+        text = const Text('S.ATK', style: style);
         break;
       case 4:
+        text = const Text('S.DEF', style: style);
+        break;
+      case 5:
         text = const Text('SPD', style: style);
         break;
       default:
