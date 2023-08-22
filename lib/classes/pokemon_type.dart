@@ -2,9 +2,10 @@ class PokemonType{
   int id;
   String name;
   String url;
+  List<PokemonType>? weakness;
 
 
-  PokemonType(this.id, this.name, this.url);
+  PokemonType(this.id, this.name, this.url, [this.weakness]);
 
   factory PokemonType.fromJson(Map<String, dynamic> data){
     return PokemonType(

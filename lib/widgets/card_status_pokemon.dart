@@ -15,8 +15,14 @@ class ChainEvolutionPokemon extends StatelessWidget {
         child: const Column(
           children: [
             ListTile(
-              title: Text("Evolution"),
-            )
+              title: Text(
+                'Weakness',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ],
         ),
       ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_app/api/api_pokedex.dart';
 import 'package:pokedex_app/widgets/card_pokemon_datails.dart';
-import 'package:pokedex_app/widgets/card_status_pokemon.dart';
 import 'package:pokedex_app/widgets/list_types_image.dart';
 
 import '../classes/pokemon.dart';
+import '../widgets/card_status_pokemon.dart';
 
 class PokemonView extends StatefulWidget {
   const PokemonView({super.key, required this.pokemon});
@@ -117,7 +117,7 @@ _imagePokemon(Pokemon pokemon){
             ]
           ),
         ),
-        //ChainEvolutionPokemon(pokemon: pokemon),
+        ChainEvolutionPokemon(pokemon: pokemon),
       ],
     ),
   );

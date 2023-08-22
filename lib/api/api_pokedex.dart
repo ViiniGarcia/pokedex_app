@@ -44,7 +44,6 @@ class ApiPokedex {
     }
   }
 
-
   Future<List<PokemonType>> getAllType() async{
     try{
       var url = criaUri('/api/v2/type');

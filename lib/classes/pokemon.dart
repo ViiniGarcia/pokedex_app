@@ -1,4 +1,4 @@
-import 'package:pokedex_app/Classes/pokemon_type.dart';
+import 'package:pokedex_app/classes/pokemon_type.dart';
 
 class Pokemon{
   int id;
@@ -8,23 +8,26 @@ class Pokemon{
   double? weight;
   double? height;
   List<PokemonType>? types;
+  List<PokemonType>? weakness;
 
 
-  Pokemon(this.id, this.name, [this.baseExp, this.isDefault, this.weight, this.height, this.types]);
+  Pokemon(this.id, this.name, [this.baseExp, this.isDefault, this.weight, this.height, this.types, this.weakness]);
 
-  factory Pokemon.fromJson(Map<String, dynamic> data) {
+  factory Pokemon.fromJson(Map<String, dynamic> dataPokemon) {
     List<PokemonType> listPokemonTypes = [];
-    for(var type in data['types']){
+    List<PokemonType> listPokemonWeakness = [];
+
+    for(var type in dataPokemon['types']){
       listPokemonTypes.add(PokemonType.fromJson(type['type']));
     }
 
     var pokemon = Pokemon(
-        data['id'],
-        data['name'].toString().replaceAll('-', ' '),
-        data['base_experience'],
-        data['is_default'],
-        data['weight']/10.toDouble(),
-        data['height']/10.toDouble(),
+        dataPokemon['id'],
+        dataPokemon['name'].toString().replaceAll('-', ' '),
+        dataPokemon['base_experience'],
+        dataPokemon['is_default'],
+        dataPokemon['weight']/10.toDouble(),
+        dataPokemon['height']/10.toDouble(),
         listPokemonTypes
     );
     return pokemon;
