@@ -15,10 +15,9 @@ class Pokemon{
 
   factory Pokemon.fromJson(Map<String, dynamic> dataPokemon) {
     List<PokemonType> listPokemonTypes = [];
-    List<PokemonType> listPokemonWeakness = [];
 
     for(var type in dataPokemon['types']){
-      listPokemonTypes.add(PokemonType.fromJson(type['type']));
+      listPokemonTypes.add(PokemonType.fromBasicJson(type['type']));
     }
 
     var pokemon = Pokemon(
