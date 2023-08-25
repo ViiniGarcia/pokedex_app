@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_app/classes/pokemon_type.dart';
+import 'package:pokedex_app/telas/type_view.dart';
+
+import '../classes/type_damage.dart';
+import 'list_types_image.dart';
 
 class CardType extends StatefulWidget {
   const CardType({
@@ -19,10 +23,10 @@ class _CardTypeState extends State<CardType> {
     return SizedBox(
       child: GestureDetector(
         onTap: (){
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => PokemonView(pokemon: widget.pokemon)),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => TypeView(type: widget.type,)),
+          );
         },
         child: Card(
           child: Container(
@@ -37,21 +41,24 @@ class _CardTypeState extends State<CardType> {
                       style: const TextStyle(
                           fontSize: 12, fontWeight: FontWeight.bold),
                     ),
+                    leading: const Icon(Icons.layers,size: 20),
                   ),
                 ),
                 Expanded(
+                  flex: 0,
                   child: Container(
                     padding: const EdgeInsetsDirectional.all(10),
                     child: Image.network(
-                      fit: BoxFit.contain,
+                      //fit: BoxFit.fitWidth,
                       errorBuilder: (context, error, stackTrace) =>
                       const Text('Imagem indísponivel'),
                       'https://raw.githubusercontent.com/ViiniGarcia/PokedexSprites/main/Sprites/Types/type=${widget.type.name}.png',
-                      width: 50,
+                      //height: 10,
+                      filterQuality: FilterQuality.high,
+
                     ),
                   ),
                 ),
-
               ],
             ),
           ),
@@ -60,6 +67,8 @@ class _CardTypeState extends State<CardType> {
     );
   }
 }
+
+
 
 
 //https://raw.githubusercontent.com/ViiniGarcia/PokedexSprites/main/Sprites/Types/type=bug.png

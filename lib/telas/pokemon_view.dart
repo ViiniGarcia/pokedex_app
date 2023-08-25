@@ -4,7 +4,7 @@ import 'package:pokedex_app/widgets/card_pokemon_details.dart';
 import 'package:pokedex_app/widgets/list_types_image.dart';
 
 import '../classes/pokemon.dart';
-import '../widgets/card_damages_pokemon.dart';
+import '../widgets/card_pokemon_damages.dart';
 
 class PokemonView extends StatefulWidget {
   const PokemonView({super.key, required this.pokemon});
@@ -31,15 +31,11 @@ class _PokemonViewState extends State<PokemonView> {
             appBar: AppBar(),
             body: Container(
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
-              child: Column(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _informationColumn(pokemon),
-                      _imagePokemon(pokemon),
-                    ],
-                  ),
+                  _informationColumn(pokemon),
+                  _imagePokemon(pokemon),
                 ],
               ),
             ),
@@ -120,7 +116,7 @@ _imagePokemon(Pokemon pokemon){
             ]
           ),
         ),
-        CardDamagesPokemon(listDamageFrom: pokemon.damageFrom!, listDamageTo: pokemon.damageTo!),
+        CardPokemonDamages(listDamageFrom: pokemon.damageFrom!, listDamageTo: pokemon.damageTo!),
       ],
     ),
   );

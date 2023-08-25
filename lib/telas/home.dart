@@ -35,17 +35,17 @@ class _HomeState extends State<Home> {
               labelType: NavigationRailLabelType.all,
               destinations: const <NavigationRailDestination>[
                 NavigationRailDestination(
-                  icon: Icon(Icons.catching_pokemon_outlined),
+                  icon: Icon(Icons.catching_pokemon),
                   selectedIcon: Icon(Icons.catching_pokemon_outlined),
                   label: Text('Pokemons'),
                 ),
                 NavigationRailDestination(
-                  icon: Icon(Icons.electric_bolt_rounded),
-                  selectedIcon: Icon(Icons.electric_bolt_rounded),
+                  icon: Icon(Icons.layers_outlined),
+                  selectedIcon: Icon(Icons.layers),
                   label: Text('Tipos'),
                 ),
                 NavigationRailDestination(
-                  icon: Icon(Icons.star),
+                  icon: Icon(Icons.star_border),
                   selectedIcon: Icon(Icons.star),
                   label: Text('Movimentos'),
                 ),

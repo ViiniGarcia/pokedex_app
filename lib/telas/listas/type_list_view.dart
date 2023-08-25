@@ -29,7 +29,7 @@ class _TypeListViewState extends State<TypeListView> {
                     child: GridView.builder(
                       gridDelegate:
                       const SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent:150,
+                        maxCrossAxisExtent:250,
                         mainAxisExtent: 150,
                       ),
                       itemCount: listType.length,

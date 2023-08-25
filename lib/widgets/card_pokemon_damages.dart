@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pokedex_app/classes/type_damage.dart';
 import 'package:pokedex_app/widgets/list_types_image.dart';
 
-class CardDamagesPokemon extends StatelessWidget {
-  const CardDamagesPokemon(
+class CardPokemonDamages extends StatelessWidget {
+  const CardPokemonDamages(
       {super.key, required this.listDamageFrom, required this.listDamageTo});
 
   final List<TypeDamage> listDamageFrom;
@@ -13,7 +13,7 @@ class CardDamagesPokemon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+        padding: const EdgeInsets.fromLTRB(5, 5, 20, 20),
         child: Column(
           children: [
             const ListTile(
