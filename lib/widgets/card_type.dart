@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pokedex_app/classes/pokemon_type.dart';
 import 'package:pokedex_app/telas/type_view.dart';
 
-import '../classes/type_damage.dart';
-import 'list_types_image.dart';
-
 class CardType extends StatefulWidget {
   const CardType({
     super.key,
