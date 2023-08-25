@@ -3,6 +3,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:pokedex_app/classes/pokemon.dart';
 import 'package:pokedex_app/classes/pokemon_type.dart';
+import 'package:pokedex_app/classes/type_damage.dart';
+
+import '../utils/damage_relations.dart';
 
 class ApiPokedex {
   
@@ -38,13 +41,25 @@ class ApiPokedex {
       var response = await http.Client().get(url);
       Map<String, dynamic> data = json.decode(response.body);
       Pokemon pokemon = Pokemon.fromJson(data);
-      List<PokemonType> listTypes = [];
-      for(PokemonType type in pokemon.types!){
-        listTypes.add(await getType(type.id));
-      }
-      pokemon.types = listTypes;
+      pokemon.types = await listCompletePokemonType(pokemon.types!);
+      List<TypeDamage> doubleDamageFrom = [];
+      List<TypeDamage> halfDamageFrom = [];
+      List<TypeDamage> noDamageFrom = [];
+      List<TypeDamage> doubleDamageTo = [];
+      List<TypeDamage> halfDamageTo = [];
+      List<TypeDamage> noDamageTo = [];
+      pokemon.types?.forEach((type) {
+        doubleDamageFrom.addAll(type.doubleDamageFrom!.reversed);
+        halfDamageFrom.addAll(type.halfDamageFrom!.reversed);
+        noDamageFrom.addAll(type.noDamageFrom!.reversed);
+        doubleDamageTo.addAll(type.doubleDamageTo!.reversed);
+        halfDamageTo.addAll(type.halfDamageTo!.reversed);
+        noDamageTo.addAll(type.noDamageTo!.reversed);
+      });
+      pokemon.damageFrom = concatAndCalculateDamages(doubleDamageFrom,halfDamageFrom,noDamageFrom);
+      pokemon.damageTo = concatAndCalculateDamages(doubleDamageTo,halfDamageTo,noDamageTo);
       return pokemon;
-    } finally {
+    }finally {
       http.Client().close();
     }
   }

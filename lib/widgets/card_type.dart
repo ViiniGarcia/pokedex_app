@@ -35,8 +35,7 @@ class _CardTypeState extends State<CardType> {
                     title: Text(
                         widget.type.name.toUpperCase(),
                       style: const TextStyle(
-                        fontSize: 12,
-                      ),
+                          fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -44,13 +43,15 @@ class _CardTypeState extends State<CardType> {
                   child: Container(
                     padding: const EdgeInsetsDirectional.all(10),
                     child: Image.network(
-                      fit: BoxFit.fitHeight,
+                      fit: BoxFit.contain,
                       errorBuilder: (context, error, stackTrace) =>
                       const Text('Imagem indísponivel'),
                       'https://raw.githubusercontent.com/ViiniGarcia/PokedexSprites/main/Sprites/Types/type=${widget.type.name}.png',
+                      width: 50,
                     ),
                   ),
                 ),
+
               ],
             ),
           ),

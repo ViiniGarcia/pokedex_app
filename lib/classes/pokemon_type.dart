@@ -1,12 +1,17 @@
+import 'package:pokedex_app/Api/api_pokedex.dart';
+import 'package:pokedex_app/classes/type_damage.dart';
+
+import '../utils/damage_relations.dart';
+
 class PokemonType{
   int id;
   String name;
-  List<PokemonType>? doubleDamageFrom;
-  List<PokemonType>? halfDamageFrom;
-  List<PokemonType>? noDamageFrom;
-  List<PokemonType>? doubleDamageTo;
-  List<PokemonType>? halfDamageTo;
-  List<PokemonType>? noDamageTo;
+  List<TypeDamage>? doubleDamageFrom;
+  List<TypeDamage>? halfDamageFrom;
+  List<TypeDamage>? noDamageFrom;
+  List<TypeDamage>? doubleDamageTo;
+  List<TypeDamage>? halfDamageTo;
+  List<TypeDamage>? noDamageTo;
 
 
   PokemonType(
@@ -28,28 +33,24 @@ class PokemonType{
   }
 
   factory PokemonType.fromCompleteJson(Map<String, dynamic> data){
-    List<PokemonType> doubleDamageFrom = _listDamage('double_damage_from', data);
-    List<PokemonType> halfDamageFrom = _listDamage('half_damage_from', data);
-    List<PokemonType> noDamageFrom = _listDamage('no_damage_from', data);
-    List<PokemonType> doubleDamageTo = _listDamage('double_damage_to', data);
-    List<PokemonType> halfDamageTo = _listDamage('half_damage_to', data);
-    List<PokemonType> noDamageTo = _listDamage('no_damage_to', data);
     return PokemonType(
         data['id'],
         data['name'],
-        doubleDamageFrom,
-        halfDamageFrom,
-        noDamageFrom,
-        doubleDamageTo,
-        halfDamageTo,
-        noDamageTo
+        listDamage(data['damage_relations']['double_damage_from'], 2),
+        listDamage(data['damage_relations']['half_damage_from'], 0.5),
+        listDamage(data['damage_relations']['no_damage_from'], 0),
+        listDamage(data['damage_relations']['double_damage_to'], 2),
+        listDamage(data['damage_relations']['half_damage_to'], 0.5),
+        listDamage(data['damage_relations']['no_damage_to'], 0)
     );
   }
 }
-_listDamage(String key, Map<String, dynamic> data){
-  List<PokemonType> listTypesDamage = [];
-  for(var data in data['damage_relations'][key]){
-    listTypesDamage.add(PokemonType.fromBasicJson(data));
+
+Future<List<PokemonType>> listCompletePokemonType(List<PokemonType> listTypes) async {
+  List<PokemonType> listCompleteTypes = [];
+  for(PokemonType type in listTypes){
+    type = await ApiPokedex().getType(type.id);
+    listCompleteTypes.add(type);
   }
-  return listTypesDamage;
+  return listCompleteTypes;
 }

@@ -27,9 +27,9 @@ class _PokemonListViewState extends State<PokemonListView> {
                 Expanded(
                   child: GridView.builder(
                     gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 5,
-                      childAspectRatio: 1,
+                    const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent:350,
+                      mainAxisExtent: 200,
                     ),
                     itemCount: listPokemons.length,
                     itemBuilder: (context, index) {

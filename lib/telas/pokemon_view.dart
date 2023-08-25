@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_app/api/api_pokedex.dart';
-import 'package:pokedex_app/widgets/card_pokemon_datails.dart';
+import 'package:pokedex_app/widgets/card_pokemon_details.dart';
 import 'package:pokedex_app/widgets/list_types_image.dart';
 
 import '../classes/pokemon.dart';
-import '../widgets/card_status_pokemon.dart';
+import '../widgets/card_damages_pokemon.dart';
 
 class PokemonView extends StatefulWidget {
   const PokemonView({super.key, required this.pokemon});
@@ -30,7 +30,7 @@ class _PokemonViewState extends State<PokemonView> {
           return Scaffold(
             appBar: AppBar(),
             body: Container(
-              padding: const EdgeInsets.fromLTRB(50, 10, 10, 10),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
               child: Column(
                 children: [
                   Row(
@@ -44,9 +44,12 @@ class _PokemonViewState extends State<PokemonView> {
               ),
             ),
           );
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
+        }
+        else {
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
           );
         }
       },
@@ -85,7 +88,7 @@ _informationColumn(Pokemon pokemon){
           children: [
             SizedBox(
               height: 30,
-              child: ListTypesImage(pokemon: pokemon,),
+              child: ListTypesImage(isDamage: false, listType: pokemon.types!,),
             ),
           ],
         ),
@@ -117,7 +120,7 @@ _imagePokemon(Pokemon pokemon){
             ]
           ),
         ),
-        ChainEvolutionPokemon(pokemon: pokemon),
+        CardDamagesPokemon(listDamageFrom: pokemon.damageFrom!, listDamageTo: pokemon.damageTo!),
       ],
     ),
   );

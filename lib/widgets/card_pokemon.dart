@@ -34,13 +34,12 @@ class _CardPokemonState extends State<CardPokemon> {
                     alignment: Alignment.topLeft,
                     child:
                     ListTile(
-                      title:
-                      Text(
+                      title: Text(
                           widget.pokemon.name.toUpperCase(),
                         style: const TextStyle(
-                          fontSize: 12,
-                        ),
+                            fontSize: 12, fontWeight: FontWeight.bold),
                       ),
+                      leading: const Icon(Icons.catching_pokemon,size: 20),
                     ),
                   ),
                 ),

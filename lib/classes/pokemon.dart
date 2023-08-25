@@ -1,4 +1,5 @@
 import 'package:pokedex_app/classes/pokemon_type.dart';
+import 'package:pokedex_app/classes/type_damage.dart';
 
 class Pokemon{
   int id;
@@ -8,10 +9,11 @@ class Pokemon{
   double? weight;
   double? height;
   List<PokemonType>? types;
-  List<PokemonType>? weakness;
+  List<TypeDamage>? damageFrom;
+  List<TypeDamage>? damageTo;
 
 
-  Pokemon(this.id, this.name, [this.baseExp, this.isDefault, this.weight, this.height, this.types, this.weakness]);
+  Pokemon(this.id, this.name, [this.baseExp, this.isDefault, this.weight, this.height, this.types, this.damageFrom, this.damageTo]);
 
   factory Pokemon.fromJson(Map<String, dynamic> dataPokemon) {
     List<PokemonType> listPokemonTypes = [];
