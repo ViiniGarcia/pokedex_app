@@ -29,14 +29,16 @@ class _PokemonViewState extends State<PokemonView> {
           pokemon = snapshot.data!;
           return Scaffold(
             appBar: AppBar(),
-            body: Container(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _informationColumn(pokemon),
-                  _imagePokemon(pokemon),
-                ],
+            body: SingleChildScrollView(
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _informationColumn(pokemon),
+                    _imagePokemon(pokemon),
+                  ],
+                ),
               ),
             ),
           );

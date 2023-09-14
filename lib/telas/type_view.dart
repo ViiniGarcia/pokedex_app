@@ -27,9 +27,11 @@ class _TypeViewState extends State<TypeView> {
           type = snapshot.data!;
           return Scaffold(
             appBar: AppBar(),
-            body: Container(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
-              child: _information(type),
+            body: SingleChildScrollView(
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+                child: _information(type),
+              ),
             ),
           );
         } else {
